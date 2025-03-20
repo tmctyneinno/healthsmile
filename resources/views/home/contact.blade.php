@@ -68,7 +68,7 @@
         </div>
 
         <div class="col-md-6" >
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9825432.093872178!2d-18.92647473324282!3d53.0421629403268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4859bae45c4027fb%3A0xcf7c1234cedbf408!2sIreland!5e0!3m2!1sen!2sng!4v1742471461961!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9825432.093872178!2d-18.92647473324282!3d53.0421629403268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4859bae45c4027fb%3A0xcf7c1234cedbf408!2sIreland!5e0!3m2!1sen!2sng!4v1742471461961!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
         </div>
       </div>
     </div>
