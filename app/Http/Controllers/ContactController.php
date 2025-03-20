@@ -28,9 +28,13 @@ class ContactController extends Controller
 
         // Send email notification (optional)
         Mail::raw("New Contact Inquiry:\n\nName: {$request->name}\nEmail: {$request->email}\nPhone: {$request->phone}\nSubject: {$request->subject}\nMessage: {$request->message}", function ($mail) use ($request) {
-            $mail->to('support@healthysmiles.com')
+            $mail->to(' info@healthysmilingireland.ie')
                 ->subject('New Contact Inquiry from ' . $request->name);
         });
+        // Mail::send('emails.inquiry', $contact, function ($message) use ($contact) {
+        //     $message->to('support@healthysmiles.com') // Replace with your support email
+        //         ->subject('New Contact Form Submission');
+        // });
 
         return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
