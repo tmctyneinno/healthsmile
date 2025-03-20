@@ -20,7 +20,7 @@
 						<div class="text-overlay">
 							<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Dentistry in a Calm and Relaxed Environment</h1>
 							<p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#" class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
+							<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p>
 						</div>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 						<div class="text-overlay">
 							<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Achieve Your Desired Perfect Smile</h1>
 							<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							<p><a href="#" class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
+							<p><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p>
 						</div>
 					</div>
 				</div>

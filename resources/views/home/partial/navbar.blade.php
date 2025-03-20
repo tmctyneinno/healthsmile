@@ -26,7 +26,7 @@
             </li>
               <!-- Services Dropdown Menu -->
               <li class="nav-item dropdown"> 
-                  <a class="nav-link dropdown-toggle" href="{{ route('home.services')}}" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="{{ route('home.services')}}"  >
                       Services
                   </a>
                   <div class="dropdown-menu" aria-labelledby="servicesDropdown">
