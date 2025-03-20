@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::get('/booking', [FrontendController::class, 'booking'])->name('home.booki
 Route::post('/book-session', [BookingController::class, 'bookSession'])->name('home.book.session');
 
 Route::get('/workshops', [FrontendController::class, 'workshops'])->name('home.workshops');
+
+Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::get('/blog', [FrontendController::class, 'blog'])->name('home.blog');
 Route::get('/blog/blog-details', [FrontendController::class, 'blogDetails'])->name('home.blog-single');

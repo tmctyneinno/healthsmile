@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="home-slider owl-carousel">
-    <div class="slider-item bread-item" style="background-image: url('{{ asset('assets/images/bg_1.jpg')}}');" data-stellar-background-ratio="0.5">
+    <div class="slider-item bread-item" style="background-color:black" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container" data-scrollax-parent="true">
         <div class="row slider-text align-items-end">
@@ -24,8 +24,8 @@
         </div>
         <div class="w-100"></div>
         <div class="col-md-4">
-          <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-          <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+          {{-- <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p> --}}
+          {{-- <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p> --}}
 
         </div>
         <div class="col-md-4">
@@ -37,18 +37,28 @@
       </div>
       <div class="row block-9">
         <div class="col-md-6 pr-md-5">
-          <form action="#">
+          @if(session('success'))
+              <div class="alert alert-success">
+                  {{ session('success') }}
+              </div>
+          @endif
+          <h5>For More Inquiries, you can reach out:</h5>
+          <form action="{{ route('contact.submit') }}" method="POST">
+            @csrf
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" name="name" class="form-control" placeholder="Your Name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email">
-            </div>
+              <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+              <input type="text" name="phone" class="form-control" placeholder="Your Phone Number" required>
+          </div>
+          <div class="form-group">
+              <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+          </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
-            </div>
-            <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
             </div>
             <div class="form-group">
               <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">

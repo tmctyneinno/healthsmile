@@ -2,7 +2,7 @@
 
 @section('content')
    <section class="home-slider owl-carousel">
-        <div class="slider-item bread-item" style="background-image: url('{{ asset('assets/images/bg_1.jpg')}}');" data-stellar-background-ratio="0.5">
+        <div class="slider-item bread-item" style="background-image: url('{{ asset('assets/images/service/bg_3.png')}}');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container" data-scrollax-parent="true">
             <div class="row slider-text align-items-end">

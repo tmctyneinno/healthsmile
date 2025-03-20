@@ -17,7 +17,7 @@
               <li class="nav-item active"><a href="{{ route('index')}}" class="nav-link">Home</a></li>
               <!-- About Dropdown Menu -->
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{ route('home.about')}}" id="aboutDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="{{ route('home.about')}}"  >
                   About
                 </a>
                 <div class="dropdown-menu" aria-labelledby="aboutDropdown">

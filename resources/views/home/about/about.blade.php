@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="home-slider owl-carousel mb-5">
-    <div class="slider-item bread-item" style="background-image: url({{ asset('assets/images/bg_1.jpg')}});" data-stellar-background-ratio="0.5">
+    <div class="slider-item bread-item" style="background-color:black" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container" data-scrollax-parent="true">
         <div class="row slider-text align-items-end">
@@ -19,7 +19,7 @@
   <section class="ftco-section-2">
     <div class="container-wrap">
       <div class="row d-flex no-gutters">
-          <div class="col-md-6 img" style="background-image: url({{ asset('assets/images/about-2.jpg')}});">
+          <div class="col-md-6 img" style="background-image: url({{ asset('assets/images/service/img_1.png')}});">
           </div>
           <div class="col-md-6 ">
               <div class="about-wrap">
@@ -101,7 +101,7 @@
 
  
 
-  <section class="ftco-section testimony-section bg-light">
+  {{-- <section class="ftco-section testimony-section bg-light">
     <div class="container">
       <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 text-center heading-section ftco-animate">
@@ -186,9 +186,9 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 
-  <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({{ asset('assets/images/bg_1.jpg')}});" data-stellar-background-ratio="0.5">
+  {{-- <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({{ asset('assets/images/bg_1.jpg')}});" data-stellar-background-ratio="0.5">
       <div class="container">
           <div class="row d-flex align-items-center">
               <div class="col-md-3 aside-stretch py-5">
@@ -235,6 +235,6 @@
             </div>
         </div>
       </div>
-  </section>
+  </section> --}}
 
 @endsection
