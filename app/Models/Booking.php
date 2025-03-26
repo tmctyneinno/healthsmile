@@ -9,5 +9,12 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'message', 'appointment_time', 'stripe_payment_id', 'is_paid'];
+    protected $fillable = [
+        'name', 
+        'email',  
+        'message', 
+        'appointment_date',
+        'appointment_time', 
+        'stripe_payment_id', '
+        is_paid'];
 }

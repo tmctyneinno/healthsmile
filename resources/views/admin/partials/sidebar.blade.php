@@ -1,6 +1,6 @@
 <div class="deznav">
-    <div class="deznav-scroll mm-active">
-        <ul class="metismenu mm-show" id="menu">
+    <div class="deznav-scroll">
+        <ul class="metismenu" id="menu">
             <li class="mm-active">
                 <a class="has-arrow ai-icon" href="{{ route('admin.index') }}" aria-expanded="false">
                     <i class="flaticon-dashboard-1"></i>
@@ -20,35 +20,36 @@
                     <span class="nav-text">Blog</span>
                 </a>
             </li>
+
+            
+            <li>
+                <a class="has-arrow ai-icon" href="{{ route('admin.booking.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-book"></i>
+                    <span class="nav-text">Booking</span>
+                   
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('admin.booking.index') }}">Booking Apponitment</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="{{ route('admin.transaction.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-layer-1"></i>
+                    <span class="nav-text">Transaction</span>
+                </a>
+            </li>
            
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-settings"></i>
                     <span class="nav-text">Settings</span>
                 </a>
                 <ul aria-expanded="false" class="mm-collapse">
-                    <li>
-                        <a  href="{{route('admin.advocacyPolicy')}}" aria-expanded="false">Advocacy & Policy</a>
-                    </li>
-                    <li>
-                        <a  href="{{route('admin.advisoryBoardMember.index')}}" aria-expanded="false">Advisory board member</a>
-                    </li>
-                    <li>
-                        <a  href="{{route('admin.certification')}}" aria-expanded="false">Certification content</a>
-                    </li>
+                    
                     <li>
                         <a  href="{{route('admin.about-us')}}" aria-expanded="false">About us</a>
                     </li>
-                    <li>
-                        <a  href="{{ route('admin.members') }}" aria-expanded="false">
-                            Membership
-                        </a>
-                    </li>
-                    <li>
-                        <a  href="{{route('admin.livestream.index')}}" aria-expanded="false">Livestream</a>
-                    </li>
-                    <li>
-                        <a  href="{{route('admin.coreActivities.index')}}" aria-expanded="false">Core activities</a>
-                    </li>
+                   
                     <li>
                         <a  href="{{route('admin.testimonials.index')}}" aria-expanded="false">Testimonials</a>
                     </li>

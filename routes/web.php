@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ContactController;
+use Spatie\GoogleCalendar\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,13 @@ use App\Http\Controllers\ContactController;
 |
 */
 require __DIR__.'/admin.php';
+
+// Route::get('/calendar', function(){
+//     $e = Event::get();
+   
+    
+//     dd($e[0]);
+// });
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/services', [FrontendController::class, 'service'])->name('home.services');

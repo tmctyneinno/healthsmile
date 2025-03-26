@@ -6,12 +6,9 @@ use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\LivestreamController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ConsultantController;
-use App\Http\Controllers\Admin\CoreActivitiesController; 
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\AboutUsController;
@@ -20,12 +17,11 @@ use App\Http\Controllers\Admin\VisionMissionController;
 use App\Http\Controllers\Admin\SociallinkController; 
 use App\Http\Controllers\Admin\TestimonialsController;
 use App\Http\Controllers\Admin\FAQController;
-use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\ContactFormController;
-use App\Http\Controllers\Admin\AdovacyPolicyController;
-use App\Http\Controllers\Admin\AdvisoryBoardMemberController;
+use App\Http\Controllers\Admin\TransactionController; 
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ApplicationController;
-use App\Http\Controllers\Admin\CertificationController;
+use App\Http\Controllers\Admin\CalendarController;
 
 
 
@@ -66,8 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::name('admin.')->group(function () {
             Route::resource('application', ApplicationController::class);
         });
-        Route::get('/transaction', [AdminController::class, 'transaction'])->name('admin.transaction.index');
-     
+       
         //About us
         Route::get('/settings/about-us', [SettingsController::class, 'getAboutUs'])->name('admin.settings.aboutUs');
         Route::post('/settings/store/about-us', [SettingsController::class, 'storeAboutUs'])->name('admin.settings.storeAboutus');
@@ -78,56 +73,19 @@ Route::prefix('admin')->group(function () {
         Route::post('/governance-board/store', [AboutUsController::class, 'governanceBoardStore'])->name('admin.governanceBoard.store');
         Route::put('/governance-board/update/about-us/{id}', [AboutUsController::class, 'governanceBoardUpdate'])->name('admin.governanceBoard.update');
         
-        // AdovacyPolicy
-        Route::get('/advocacyPolicy', [AdovacyPolicyController::class, 'index'])->name('admin.advocacyPolicy');
-        // Route::get('/members-benefit', [AdovacyPolicyController::class, 'membersBenefit'])->name('admin.members.membersBenefit');
-        Route::post('/policies-governance/post', [AdovacyPolicyController::class, 'policiesGovernanceStore'])->name('admin.policiesGovernanceFramework.store');
-        Route::put('/policies-governance/update/{id}', [AdovacyPolicyController::class, 'policiesGovernanceUpate'])->name('admin.policiesGovernanceFramework.update');
+        // TransactionController
+        Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
+        Route::get('/transaction/show/{id}', [TransactionController::class, 'show'])->name('admin.transaction.show');
+      
+        
         // advisoryBoardMember
-        Route::get('/advisory-board-member', [AdvisoryBoardMemberController::class, 'index'])->name('admin.advisoryBoardMember.index');
-        Route::get('/advisory-board-member/create', [AdvisoryBoardMemberController::class, 'create'])->name('admin.advisoryBoardMember.create');
-        Route::post('/advisory-board-member/store', [AdvisoryBoardMemberController::class, 'store'])->name('admin.advisoryBoardMember.store');
-        Route::get('/advisory-board-member/edit/{id}', [AdvisoryBoardMemberController::class, 'edit'])->name('admin.advisoryBoardMember.edit');
-        Route::put('/advisory-board-member/update/{id}', [AdvisoryBoardMemberController::class, 'update'])->name('admin.advisoryBoardMember.update');
-        Route::get('/advisory-board-member/delete/{id}', [AdvisoryBoardMemberController::class, 'destroy'])->name('admin.advisoryBoardMember.destroy');
+        Route::get('/booking', [BookingController::class, 'index'])->name('admin.booking.index');
+        Route::get('/booking/show/{id}', [BookingController::class, 'show'])->name('admin.booking.show');
+        // Route::put('/booking/update/{id}', [BookingController::class, 'update'])->name('admin.booking.update');
+        Route::get('/booking/delete/{id}', [BookingController::class, 'destroy'])->name('admin.booking.destroy');
 
-        // members
-        Route::get('/members', [MembersController::class, 'index'])->name('admin.members');
        
-        Route::get('/members-benefit', [MembersController::class, 'membersBenefit'])->name('admin.members.membersBenefit');
-        Route::post('/members-benefit/post', [MembersController::class, 'membersBenefitStore'])->name('admin.membersBenefit.store');
-        Route::put('/members-benefit/update/{id}', [MembersController::class, 'membersBenefitUpate'])->name('admin.membersBenefit.update');
-
-        Route::get('/membership-overview', [MembersController::class, 'membersOverview'])->name('admin.members.membersOverview');
-        Route::post('/membership-overview/post', [MembersController::class, 'membersOverviewStore'])->name('admin.membersOverview.store');
-        Route::put('/membership-overview/update/{id}', [MembersController::class, 'membersOverviewUpate'])->name('admin.membersOverview.update');
-
-        Route::get('/membership-subscription-fees', [MembersController::class, 'membersSubscriptionFees'])->name('admin.members.membersSubscriptionFees');
-        Route::post('/membership-subscription-fees/post', [MembersController::class, 'membersSubscriptionFeesStore'])->name('admin.membersSubscriptionFees.store');
-        Route::put('/membership-subscription-fees/update/{id}', [MembersController::class, 'membersSubscriptionFeesUpate'])->name('admin.membersSubscriptionFees.update');
         
-        Route::get('/membership-tiers', [MembersController::class, 'membershipTiers'])->name('admin.members.membershipTiers');
-        Route::post('/membership-tiers/post', [MembersController::class, 'membershipTiersStore'])->name('admin.membershipTiers.store');
-        Route::put('/membership-tiers/update/{id}', [MembersController::class, 'membershipTiersUpate'])->name('admin.membershipTiers.update');
-        
-        Route::get('/membership-programme', [MembersController::class, 'membersProgramme'])->name('admin.members.membersProgramme');
-        Route::post('/membership-programme/post', [MembersController::class, 'membersProgrammeStore'])->name('admin.membersProgramme.store');
-        Route::put('/membership-programme/update/{id}', [MembersController::class, 'membersProgrammeUpate'])->name('admin.membersProgramme.update');
-        
-        Route::get('/membership-application', [MembersController::class, 'membershipApplication'])->name('admin.members.membershipApplication');
-        Route::post('/membership-application/post', [MembersController::class, 'membershipApplicationStore'])->name('admin.membershipApplication.store');
-        Route::put('/membership-application/update/{id}', [MembersController::class, 'membershipApplicationUpate'])->name('admin.membershipApplication.update');
-       
-        // certification
-        Route::get('/certification', [CertificationController::class, 'index'])->name('admin.certification');
-        Route::get('/programme-examination', [CertificationController::class, 'programmeExamination'])->name('admin.certification.programmeExamination');
-        Route::post('/programme-examination/post', [CertificationController::class, 'programmeExaminationStore'])->name('admin.programmeExamination.store');
-        Route::put('/programme-examination/update/{id}', [CertificationController::class, 'programmeExaminationUpate'])->name('admin.programmeExamination.update');
-        
-        Route::get('/exam-requirement', [CertificationController::class, 'examRequirement'])->name('admin.certification.examRequirement');
-        Route::post('/exam-requirement/post', [CertificationController::class, 'examRequirementStore'])->name('admin.examRequirement.store');
-        Route::put('/exam-requirement/update/{id}', [CertificationController::class, 'examRequirementUpate'])->name('admin.examRequirement.update');
-       
         //Core Value 
         Route::get('/settings/core-value', [CoreValueController::class, 'index'])->name('admin.coreValue.index');
         Route::post('/settings/store/core-value', [CoreValueController::class, 'store'])->name('admin.coreValue.store');
@@ -151,11 +109,6 @@ Route::prefix('admin')->group(function () {
         Route::post('/settings/store/social-links', [SociallinkController::class, 'storeSocialLinks'])->name('admin.settings.storeSocialLinks');
         Route::put('/settings/update/social-links/{id}', [SociallinkController::class, 'updateSocialLinks'])->name('admin.settings.updateSocialLinks');
        
-        //Careers 
-        Route::get('career/index', [CareerController::class, 'index'])->name('admin.career.index');
-        Route::post('career/store/', [CareerController::class, 'store'])->name('admin.career.store');
-        Route::put('career/update/{id}', [CareerController::class, 'update'])->name('admin.career.update');
-       
 
          //Privacy
         // Route::get('/index/privacypolicy', [PrivacyController::class, 'index'])->name('admin.privacyPolicy.index');
@@ -164,14 +117,6 @@ Route::prefix('admin')->group(function () {
         
         
         
-        //Livestream
-        Route::get('livestream/index', [LivestreamController::class, 'index'])->name('admin.livestream.index');
-        Route::get('livestream/create', [LivestreamController::class, 'create'])->name('admin.livestream.create');
-        Route::post('livestream/store', [LivestreamController::class, 'store'])->name('admin.livestream.store');
-        Route::get('/livestream/{id}/edit', [LivestreamController::class, 'edit'])->name('admin.livestream.edit');
-        Route::put('/livestream/{id}', [LivestreamController::class, 'update'])->name('admin.livestream.update');
-        Route::get('/livestream/{id}', [LivestreamController::class, 'destroy'])->name('admin.livestream.destroy');
-
        
         //Blog 
         Route::get('blog/index', [BlogController::class, 'index'])->name('admin.blog.index');
@@ -192,14 +137,9 @@ Route::prefix('admin')->group(function () {
         Route::get('service/{id}/details', [ServiceController::class, 'details'])->name('service.details');
        
         
-       //CoreActivitiesController
-        Route::get('core-activities/index', [CoreActivitiesController::class, 'index'])->name('admin.coreActivities.index');
-        Route::get('core-activities/create', [CoreActivitiesController::class, 'create'])->name('admin.coreActivities.create');
-        Route::post('core-activities/store', [CoreActivitiesController::class, 'store'])->name('admin.coreActivities.store');
-        Route::get('core-activities/{id}/edit', [CoreActivitiesController::class, 'edit'])->name('admin.coreActivities.edit');
-        Route::put('core-activities/{id}', [CoreActivitiesController::class, 'update'])->name('admin.coreActivities.update');
-        Route::get('core-activities/{id}', [CoreActivitiesController::class, 'destroy'])->name('admin.coreActivities.destroy');
-        
+       //CalendarController
+       Route::get('system-calendar', [CalendarController::class, 'index'])->name('admin.calendar.index');
+
         //Testimonials
         Route::get('testimonials/index', [TestimonialsController::class, 'index'])->name('admin.testimonials.index');
         Route::get('testimonials/create', [TestimonialsController::class, 'create'])->name('admin.testimonials.create');

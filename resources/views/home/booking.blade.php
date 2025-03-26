@@ -83,23 +83,53 @@
                     </ul>
                 </div>
                 <div class="col-md-6 ftco-animate pr-md-5 order-md-first">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <h5 class="modal-title" >Fill the details below </h5>
                     <form action="{{ route('home.book.session') }}" method="POST" id="payment-form">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                         </div>
-                        <div class="form-group">
-                            <!-- <label for="appointment_date" class="text-black">Date</label> -->
-                            <input type="text" class="form-control appointment_date" name="appointment_time" required placeholder="Date">
-                        </div>  
+                        <div class="row">
+                            <div class="col-6">
+                            <div class="form-group">
+                                <!-- <label for="appointment_date" class="text-black">Date</label> -->
+                                <input type="text" class="form-control appointment_date" name="appointment_date" required placeholder="Date">
+                            </div>  
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <!-- <label for="appointment_date" class="text-black">Date</label> -->
+                                <input type="text" class="form-control appointment_time" name="appointment_time" required placeholder="Time">
+                            </div>  
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
                             <!-- <label for="appointment_message" class="text-black">Message</label> -->
                             <textarea name="message" id="appointment_message" class="form-control" cols="30" rows="5" placeholder="Message"></textarea>
                         </div>
+
+                        {{-- <div class="form-group">
+                            <input type="submit" value="Submit" class="btn btn-primary py-1 px-3">
+                        </div> --}}
                         
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="{{ env('STRIPE_KEY') }}"
@@ -109,6 +139,7 @@
                             data-description="Session Booking (25 Euros)"
                             data-locale="auto">
                         </script>
+
                     </form>
                     
                     

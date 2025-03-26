@@ -10,16 +10,17 @@
         <div class="container-fluid">
             <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
                 <div class="me-auto d-lg-block d-block">
-                    <h2 class="text-black font-w600">Core Activities</h2>
-                    <p class="mb-0">Welcome to  {{ $contactUs->company_name}} backend</p>
+                    <h2 class="text-black font-w600">Booking</h2>
+                    <p class="mb-0">Welcome to  {{ $contactUs->company_name ?? ''}} backend</p>
                 </div>
-                <a href="{{route('admin.coreActivities.index')}}" class="btn btn-primary rounded light">View Industries</a>
+                <a href="{{route('admin.booking.index')}}" class="btn btn-primary rounded light">View Booking</a>
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-12 align-center">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Core Activities</h4>
+
+                            <h4 class="card-title">View Details</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
@@ -39,53 +40,46 @@
                                 @endif
                 
                                 
-                                <form method="POST"  action="{{ route('admin.coreActivities.update', $coreActivities->id ) }}" enctype="multipart/form-data">
+                                <form method="POST"  action="" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3 row align-items-center">
-                                        <label class="col-sm-3 col-form-label form-label">Title</label>
+                                        <label class="col-sm-3 col-form-label form-label">Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Title" name="title" id="title" value="{{ $coreActivities->title }}" required>
+                                            <input disabled type="text" class="form-control" placeholder="Question" name="question" id="question" value="{{ $transaction->booking->name ?? $bookng->name }}" required>
                                         </div>
                                     </div>
-                                    
                                     <div class="mb-3 row align-items-center">
-                                        <label class="col-sm-3 col-form-label form-label">Content</label>
+                                        <label class="col-sm-3 col-form-label form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <div class="">
-                                                <textarea name="content" id="ckeditor" class="form-control" required>{{ $coreActivities->content }}</textarea>
+                                            <input disabled type="text" class="form-control" placeholder="Question" name="question" id="question" value="{{ $transaction->booking->email ?? $bookng->email}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label">Appointment date</label>
+                                        <div class="col-sm-9">
+                                            <p>{{ \Carbon\Carbon::parse($transaction->booking->appointment_date ?? $bookng->appointment_date)->format('l, d F Y') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label">Appointment time</label>
+                                        <div class="col-sm-9">
+                                            <p>{{ $transaction->booking->appointment_time ?? $bookng->appointment_time }}</p>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="mb-3 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label">Message</label>
+                                        <div class="col-sm-9">
+                                            <div  class="">
+                                                <textarea disabled  name="answer"  class="form-control" placeholder="Answer" required>{{ $transaction->booking->message ?? $bookng->message }}</textarea>
                                             </div>
                                         </div>
-                                    </div> 
-
-                                    <div class="mb-3 row align-items-center">
-                                        <label class="col-sm-3 col-form-label form-label">Image</label>
-                                        <div class="col-sm-9">
-                                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" onchange="previewImage(event)">
-                                            @error('image')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            <img src="{{ asset($coreActivities->image) }}" alt="{{ $coreActivities->title }}" class="img-thumbnail mt-2" width="200">
-                                           
-                                            <img id="image-preview" src="" alt="Image Preview" class="img-thumbnail mt-2" style="display:none; max-width: 200px;">
-                                            <br>
-                                            <small class="text-danger">Maximum file size: 2MB. Allowed file types: JPEG, PNG, JPG, GIF.</small>
-                                    
-                                         </div>
-                                         
                                     </div>
                                     
                                     
+                                
                                     
-                                    
-                                  
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Update Industries</button>
-                                        </div>
-                                    </div>
                                    
                                 </form>
                                 <script>

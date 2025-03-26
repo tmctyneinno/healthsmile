@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->text('message');
             $table->dateTime('appointment_time');
+            $table->dateTime('appointment_date');
             $table->string('stripe_payment_id')->nullable();
             $table->boolean('is_paid')->default(false);
             $table->timestamps();

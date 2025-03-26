@@ -6,7 +6,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Transaction </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Booking </a></li>
                 
             </ol>
         </div> 
@@ -35,9 +35,11 @@
 
                     <div class="card-header border-0 pb-0">
                         <div class="clearfix">
-                            <h3 class="card-title">Transaction List</h3>
+                            <h3 class="card-title">Booking List</h3>
                         </div>
-                        
+                        <div class="clearfix text-center">
+                            <a href="{{ route('admin.calendar.index') }}" class="btn btn-primary">View Calender</a>
+                        </div>
                     </div>
 
                     
@@ -46,38 +48,39 @@
                             <table class="table table-responsive-md">
                                 <thead>
                                     <tr>
-                                        <th>Transaction ID</th>
-                                        <th>Transaction Name</th>
-                                        <th>Transaction Reference</th>
-                                        <th>Date</th>
-                                        <th>Amount</th>
-                                        <th>Payment Status</th>
-                                        <th>View </th>
+                                        <th>Booking ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Message</th>
+                                        <th>Appointment date</th>
+                                        {{-- <th>Payment ID</th> --}}
+                                        <th>Time</th>
+                                        <th>Created date </th>
                                     </tr>
                                 </thead>
                                 <tbody> 
-                                    @forelse ($data as $index => $transaction)
+                                    @forelse ($data as $index => $booking)
                                     <tr> 
                                         <td><strong>{{  $index + 1 }}</strong></td>
-                                        <td>{{ $transaction->booking->name}}</td>
-
-                                        <td>{{ $transaction->stripe_payment_id}}</td>
-                                        <td>{{ $transaction->created_at->format('d F Y') }}</td>
-                                        <td>€{{ number_format($transaction->amount, 2) }}</td>
+                                        <td>{{ $booking->name}}</td>
+                                        <td>{{ $booking->email}}</td>
+                                        <td>{{ $booking->message}}</td>
+                                        <td>{{ \Carbon\Carbon::parse($booking->appointment_date)->format('l, d F Y') }}</td>
+                                        <td>{{ $booking->appointment_time}}</td>
+                                        {{-- <td>{{ $booking->stripe_payment_id}}</td> --}}
+                                        <td>{{ $booking->created_at->format('d F Y') }}</td>
+                                       
                                         <td>
-                                            @if($transaction->status === 'pending')
-                                                <button class="btn btn-warning btn-sm">{{ ucfirst($transaction->status) }}</button>
-                                            @elseif($transaction->status === 'successful')
-                                                <button class="btn btn-success btn-sm">{{ ucfirst($transaction->status) }}</button>
-                                            @elseif($transaction->status === 'failed')
-                                                <button class="btn btn-danger btn-sm">{{ ucfirst($transaction->status) }}</button>
-                                            @elseif($transaction->status === 'cancelled')
-                                                <button class="btn btn-danger btn-sm">{{ ucfirst($transaction->status) }}</button>
-                                            @endif
+                                            <a href="{{ route('admin.booking.show',  encrypt($booking->id) ) }}" class="btn btn-primary btn-sm">View</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.transaction.show',  encrypt($transaction->id) ) }}" class="btn btn-primary btn-sm">View</a>
+                                            <a href="{{ route('admin.booking.destroy', encrypt($booking->id)) }}" 
+                                               class="btn btn-danger btn-sm" 
+                                               onclick="return confirm('Are you sure you want to delete this booking? This action cannot be undone.')">
+                                               Delete
+                                            </a>
                                         </td>
+                                        
                                         
                                     </tr>
                                     @empty
