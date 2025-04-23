@@ -1,72 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from omah.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 14 Jun 2024 10:44:52 GMT -->
-
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Title -->
-    <title>{{$contactUs->company_name ??''}}</title>
+    <title>{{ $contactUs->company_name ?? config('app.name', 'Admin Panel') }}</title> {{-- Added fallback --}}
 
     <!-- Meta -->
-    <meta charset="utf-8"> 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="DexignZone">
-    <meta name="robots" content="index, follow">
-     <!-- Favicon icon -->
-     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($contactUs->favicon??'')}}">
-    
-
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta property="og:title" content="{{ ($contactUs->company_name ??"") }}">
-    <meta property="og:description" content="">
+    <meta name="author" content="The Morgans"> {{-- Updated author --}}
+    <meta name="robots" content="noindex, nofollow"> {{-- Prevent search engine indexing --}}
+    <meta name="description" content="Admin Dashboard for {{ $contactUs->company_name ?? config('app.name') }}"> {{-- Added basic description --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <!-- MOBILE SPECIFIC -->
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <!-- Vectormap -->
-    <link href="{{ asset ('backend/vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('backend/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
-    <link href="{{ asset ('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('backend/css/style.css')}}" rel="stylesheet">
-    <!-- Datatable -->
-    <link href="{{ asset ('backend/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('backend/vendor/datatables/responsive/responsive.css')}}" rel="stylesheet">
-    <link href="{{ asset ('backend/vendor/dropzone/dist/dropzone.css')}}" rel="stylesheet">
-    <link href="{{ asset ('backend/vendor/nestable2/css/jquery.nestable.min.css')}}" rel="stylesheet">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}"> {{-- Added CSRF token --}}
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($contactUs->favicon ?? 'favicon.ico') }}"> {{-- Added fallback favicon --}}
+
+    {{-- Open Graph tags (Optional for Admin, but good practice to have basic ones) --}}
+    <meta property="og:title" content="{{ $contactUs->company_name ?? config('app.name', 'Admin Panel') }}">
+    <meta property="og:description" content="Admin Dashboard">
+    {{-- No need for og:image usually in admin --}}
+
+    <!-- Vendor CSS -->
+    <link href="{{ asset('backend/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    {{-- Removed duplicate responsive.css link if it's included in the one below --}}
+    <link href="{{ asset('backend/vendor/datatables/responsive/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/dropzone/dist/dropzone.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/nestable2/css/jquery.nestable.min.css') }}" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-     
+
+    {{-- Removed jQuery/Toastr JS from head - should be loaded before closing </body> --}}
+
 </head>
 
 <body>
 
-    @include('admin/partials.navbar');
-    @include('admin/partials.sidebar');
+    <!--*******************
+        Preloader start
+    ********************-->
+    {{-- <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div> --}}
+    <!--*******************
+        Preloader end
+    ********************-->
 
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <main>
-        @yield('content')
-    </main>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-    
-    <!--**********************************
-        Footer start
-    ***********************************-->
-    <div class="footer">
-        <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://morgansconsortium.com/"
-                    target="_blank"> The Morgans</a> <span id="currentYear"></span> </p>
+    <div id="main-wrapper"> {{-- Common wrapper div in many templates --}}
+
+        @include('admin.partials.navbar') {{-- Corrected include syntax --}}
+        @include('admin.partials.sidebar') {{-- Corrected include syntax --}}
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                {{-- You might want a row/col structure here depending on your content --}}
+                @yield('content')
+            </div>
         </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="https://morgansconsortium.com/"
+                        target="_blank"> The Morgans</a> <span id="currentYear"></span> </p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
     </div>
     <!--**********************************
-        Footer end
+        Main wrapper end
     ***********************************-->
 
 
@@ -74,112 +104,142 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset ('backend/vendor/global/global.min.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/chartjs/chart.bundle.min.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/owl-carousel/owl.carousel.js')}}"></script>
+    <script src="{{ asset('backend/vendor/global/global.min.js') }}"></script> {{-- Load this first --}}
+    <script src="{{ asset('backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/chartjs/chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/owl-carousel/owl.carousel.js') }}"></script>
 
     <!-- Apex Chart -->
-    <script src="{{ asset ('backend/vendor/apexchart/apexchart.js')}}"></script>
+    <script src="{{ asset('backend/vendor/apexchart/apexchart.js') }}"></script>
+
     <!-- Vectormap -->
-    <script src="{{ asset ('backend/vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/jqvmap/js/jquery.vmap.world.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
+    <script src="{{ asset('backend/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/jqvmap/js/jquery.vmap.world.js') }}"></script>
+    <script src="{{ asset('backend/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
 
     <!-- Chart piety plugin files -->
-    <script src="{{ asset ('backend/vendor/peity/jquery.peity.min.js')}}"></script>
-    <script src="{{ asset ('backend/js/dashboard/dashboard-1.js')}}"></script>
-    <script src="{{ asset ('backend/js/custom.min.js')}}"></script>
-    <script src="{{ asset ('backend/js/deznav-init.js')}}"></script>
-    <!-- ckeditor -->
-    <script src="{{ asset ('backend/vendor/ckeditor/ckeditor.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/ckeditor/ckeditorContent.js')}}"></script>
-    <!-- Datatable --> 
-    <script src="{{ asset ('backend/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-	<script src="{{ asset ('backend/vendor/datatables/responsive/responsive.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/js/plugins-init/datatables.init.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/dropzone/dist/dropzone.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/nestable2/js/jquery.nestable.min.js')}}"></script>
-    <script src="{{ asset ('backend/vendor/global/global.min.js')}}"></script>
-    <!-- Dashboard 1 -->
-    <script>
-        // JavaScript to automatically update the current year
-        document.getElementById("currentYear").textContent = new Date().getFullYear();
-      </script>
-    <script>
-        function carouselReview(){
-			/*  testimonial one function by = owl.carousel.js */
-			jQuery('.testimonial-one').owlCarousel({
-				loop:true,
-				autoplay:true,
-				margin:0,
-				nav:true,
-				dots: false,
-				navText: ['<i class="las la-long-arrow-alt-left"></i>', '<i class="las la-long-arrow-alt-right"></i>'],
-				responsive:{
-					0:{
-						items:1
-					},
-					
-					480:{
-						items:1
-					},			
-					
-					767:{
-						items:1
-					},
-					1000:{
-						items:1
-					}
-				}
-			})		
-			/*Custom Navigation work*/
-			jQuery('#next-slide').on('click', function(){
-			   $('.testimonial-one').trigger('next.owl.carousel');
-			});
+    <script src="{{ asset('backend/vendor/peity/jquery.peity.min.js') }}"></script>
 
-			jQuery('#prev-slide').on('click', function(){
-			   $('.testimonial-one').trigger('prev.owl.carousel');
-			});
-			/*Custom Navigation work*/
-		} 
-		
-		jQuery(window).on('load',function(){
-			setTimeout(function(){
-				carouselReview();
-			}, 1000); 
-		});
-    </script>
-     <style>
-        /* Increase font size of Toastr */
-        #toast-container > .toast {
-            font-size: 18px; /* You can change 18px to any size you want */
-        }
-    </style>
+    <!-- Datatable -->
+    <script src="{{ asset('backend/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datatables/responsive/responsive.js') }}"></script>
+    <script src="{{ asset('backend/vendor/js/plugins-init/datatables.init.js') }}"></script>
+
+    <!-- Dropzone -->
+    <script src="{{ asset('backend/vendor/dropzone/dist/dropzone.js') }}"></script>
+
+    <!-- Nestable -->
+    <script src="{{ asset('backend/vendor/nestable2/js/jquery.nestable.min.js') }}"></script>
+
+    <!-- CKEditor -->
+    <script src="{{ asset('backend/vendor/ckeditor/ckeditor.js') }}"></script>
+    {{-- <script src="{{ asset('backend/vendor/ckeditor/ckeditorContent.js') }}"></script> --}} {{-- Check if this custom script is needed --}}
+
+    <!-- Dashboard specific & Custom scripts -->
+    <script src="{{ asset('backend/js/dashboard/dashboard-1.js') }}"></script>
+    <script src="{{ asset('backend/js/custom.min.js') }}"></script>
+    <script src="{{ asset('backend/js/deznav-init.js') }}"></script>
+
+    {{-- Removed duplicate global.min.js --}}
+
+    <!-- Toastr JS (jQuery is included in global.min.js or loaded separately above) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Footer Year Update -->
     <script>
-        @if(session('status'))
-            $(document).ready(function() {
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Carousel Initialization -->
+    <script>
+        function carouselReview() {
+            /* testimonial one function by = owl.carousel.js */
+            jQuery('.testimonial-one').owlCarousel({
+                loop: true,
+                autoplay: true,
+                margin: 0,
+                nav: true,
+                dots: false,
+                navText: ['<i class="las la-long-arrow-alt-left"></i>', '<i class="las la-long-arrow-alt-right"></i>'],
+                responsive: {
+                    0: { items: 1 },
+                    480: { items: 1 },
+                    767: { items: 1 },
+                    1000: { items: 1 }
+                }
+            });
+            /* Custom Navigation work */
+            jQuery('#next-slide').on('click', function() {
+                $('.testimonial-one').trigger('next.owl.carousel');
+            });
+            jQuery('#prev-slide').on('click', function() {
+                $('.testimonial-one').trigger('prev.owl.carousel');
+            });
+        }
+
+        jQuery(window).on('load', function() {
+            // Use document ready for DOM manipulations, window load for things dependent on images/resources
+            setTimeout(function() {
+                carouselReview();
+            }, 500); // Reduced timeout slightly
+        });
+    </script>
+
+    <!-- Toastr Notification Script -->
+    <script>
+        $(document).ready(function() { // Ensure DOM is ready
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right", // Common position
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000", // 5 seconds
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            @if (session('status'))
                 toastr.success("{{ session('status') }}");
-            });
-        @endif
-        @if(session('success'))
-            $(document).ready(function() {
+            @endif
+            @if (session('success'))
                 toastr.success("{{ session('success') }}");
-            });
-        @endif
-    
-        @if($errors->any())
-            $(document).ready(function() {
+            @endif
+            @if (session('error')) // Added for error messages
+                toastr.error("{{ session('error') }}");
+            @endif
+            @if (session('warning')) // Added for warning messages
+                toastr.warning("{{ session('warning') }}");
+            @endif
+            @if (session('info')) // Added for info messages
+                toastr.info("{{ session('info') }}");
+            @endif
+
+            @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     toastr.error("{{ $error }}");
                 @endforeach
-            });
-        @endif
+            @endif
+        });
     </script>
-    
+
+    {{-- Add any page-specific scripts using @stack('scripts') if needed --}}
+    @stack('scripts')
+
+    {{-- Inline style for Toastr font size (can be moved to CSS file) --}}
+    <style>
+        #toast-container > .toast {
+            font-size: 16px; /* Adjusted font size */
+        }
+    </style>
 
 </body>
-
-<!-- Mirrored from omah.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 14 Jun 2024 10:46:42 GMT -->
 
 </html>
