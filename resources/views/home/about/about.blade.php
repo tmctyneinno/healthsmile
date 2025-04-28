@@ -19,27 +19,14 @@
   <section class="ftco-section-2">
     <div class="container-wrap">
       <div class="row d-flex no-gutters">
-          <div class="col-md-6 img" style="background-image: url({{ asset('assets/images/service/img_1.png')}});">
+          <div class="col-md-6 img" style="background-image: url({{ asset($aboutUs->image) }});">
           </div>
-          <div class="col-md-6 ">
+          <div class="col-md-6 "> 
               <div class="about-wrap">
                   <div class="heading-section heading-section-white mb-5 ftco-animate">
-                <h2 class="mb-2">We Offer High Quality Services</h2>
-                <p>
-                  We are a dental health wellness organisation promoting preventive dental health care. A lot of dental health problems can be avoided if only education and very early intervention is available to everyone. These dental health problems has led to lots of challenges such as pain, loss of teeth, mental health challenges, compromised quality of life, social exclusion and even malnutrition to name a few.
-                </p>
-                <p>
-                  Healthy Smiling Ireland promotes dental health wellbeing through it’s interactive, fun and informative oral health prevention education and activities providing support to the populace online and onsite.
-                </p>
-                <p>
-                  Online, the general public are able to book sessions with our oral health coach by listening to them, understand their individual dental health challenges, support them in finding the best solution suitable to their individual needs to achieve optimum oral health which supports their overall wellbeing. 
-                  Onsite, the general public are also able to book sessions for us to visit their locations across the country to deliver dental awareness and provide support according to their needs as either groups or individuals.
-                </p>
-                <p>
-                  We work with individuals, groups, organisations, schools and communities across Ireland at a venue of their choosing to help people lead healthier lives knowing that our oral health plays a significant part of our overall wellbeing, knowing what to do, how to do what to do and also when to do it as it relates to dental health in very important.
-                </p>
-                <p>
-                  No matter where you are in the oral health care journey, we are here to hold your hand while educating you about the next best steps in your journey to a healthy mouth thus, a healthy life. 
+                <h2 class="mb-2">{{$aboutUs->title }}</h2>
+                <p class="text-justify"> 
+                  {!! $aboutUs->content !!}
                 </p>
 
               </div>
@@ -53,9 +40,9 @@
 
 
     <section class="ftco-section">
-      <div class="container">
+      <div class="container"> 
           <div class="row d-md-flex">
-              <div class="col-md-6 ftco-animate img about-image order-md-last" style="background-image: url({{ asset('assets/images/about.jpg')}});">
+              <div class="col-md-6 ftco-animate img about-image order-md-last" style="background-image: url({{ asset($visionMission->vision_img )}}); height:300px; ">
               </div>
               <div class="col-md-6 ftco-animate pr-md-5 order-md-first">
                   <div class="row">
@@ -75,21 +62,15 @@
 
                     <div class="tab-pane fade show active" id="v-pills-mission" role="tabpanel" aria-labelledby="v-pills-mission-tab">
                       <div>
-                          <h2 class="mb-4">To Accomodate All Patients</h2>
-                          <p>
-                            To empower children and adults to understand and practice healthy dental habits through education and varying intervention activities which promote prevention of dental challenges now and in their lifetime.
-                          </p>
+                          <p>{!! $visionMission->vision !!}
+                         
                         </div>
                     </div>
 
                     <div class="tab-pane fade" id="v-pills-goal" role="tabpanel" aria-labelledby="v-pills-goal-tab">
                       <div>
-                          <h2 class="mb-4">Help Our Customers Needs</h2>
-                            <p>To nurture lifelong dental health champions.</p>
-                            <br>
-                            <br>
-                            <br>
-                          </div>
+                         <p>{!! $visionMission->mission !!}
+
                     </div>
                   </div>
                 </div>

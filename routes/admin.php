@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ConsultantController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -18,9 +19,11 @@ use App\Http\Controllers\Admin\SociallinkController;
 use App\Http\Controllers\Admin\TestimonialsController;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\ContactFormController;
+use App\Http\Controllers\Admin\ContactController; 
 use App\Http\Controllers\Admin\TransactionController; 
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ApplicationController;
+use App\Http\Controllers\Admin\FounderController;
 use App\Http\Controllers\Admin\CalendarController;
 
 
@@ -49,6 +52,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/slider/{id}/edit', [SliderController::class, 'edit'])->name('admin.slider.edit');
         Route::put('/slider/{id}', [SliderController::class, 'update'])->name('admin.slider.update');
         Route::get('/slider/{id}', [SliderController::class, 'destroy'])->name('admin.slider.destroy');
+        //Gallery
+        Route::get('/gallery/index', [GalleryController::class, 'index'])->name('admin.gallery.index');
+        Route::get('/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+        Route::post('/gallery/post/index', [GalleryController::class, 'store'])->name('admin.gallery.store');
+        Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+        Route::put('/gallery/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
+        Route::get('/gallery/{id}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+        
+
         //Why choose us 
         Route::get('/settings/content', [SettingsController::class, 'WhyChooseUs'])->name('admin.settings.content');
         Route::post('/settings/store/why-choose-us', [SettingsController::class, 'storeWhyChooseUs'])->name('admin.settings.store_why_choose_us');
@@ -67,7 +79,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/settings/about-us', [SettingsController::class, 'getAboutUs'])->name('admin.settings.aboutUs');
         Route::post('/settings/store/about-us', [SettingsController::class, 'storeAboutUs'])->name('admin.settings.storeAboutus');
         Route::put('/settings/update/about-us/{id}', [SettingsController::class, 'updateAboutUs'])->name('admin.settings.updateAboutus');
-        // Governance-board
+        
+        // AboutUsController
         Route::get('/about-us', [AboutUsController::class, 'index'])->name('admin.about-us');
         Route::get('/governance-board', [AboutUsController::class, 'governanceBoard'])->name('admin.governanceBoard');
         Route::post('/governance-board/store', [AboutUsController::class, 'governanceBoardStore'])->name('admin.governanceBoard.store');
@@ -77,15 +90,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
         Route::get('/transaction/show/{id}', [TransactionController::class, 'show'])->name('admin.transaction.show');
       
+        // ContactController
+        Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact.index');
+        Route::get('/contact/show/{id}', [ContactController::class, 'show'])->name('admin.contact.show');
+      
         
-        // advisoryBoardMember
+        // BookingController
         Route::get('/booking', [BookingController::class, 'index'])->name('admin.booking.index');
         Route::get('/booking/show/{id}', [BookingController::class, 'show'])->name('admin.booking.show');
-        // Route::put('/booking/update/{id}', [BookingController::class, 'update'])->name('admin.booking.update');
         Route::get('/booking/delete/{id}', [BookingController::class, 'destroy'])->name('admin.booking.destroy');
 
-       
-        
         //Core Value 
         Route::get('/settings/core-value', [CoreValueController::class, 'index'])->name('admin.coreValue.index');
         Route::post('/settings/store/core-value', [CoreValueController::class, 'store'])->name('admin.coreValue.store');
@@ -95,6 +109,12 @@ Route::prefix('admin')->group(function () {
         Route::post('/settings/vision-mission/store', [VisionMissionController::class, 'store'])->name('admin.visionMission.store');
         Route::put('/settings/vision-mission/update/{id}', [VisionMissionController::class, 'update'])->name('admin.visionMission.update');
         
+        //Founder
+        Route::get('/settings/founder/index', [FounderController::class, 'index'])->name('admin.founder.index');
+        Route::post('/settings/founder/store', [FounderController::class, 'store'])->name('admin.founder.store');
+        Route::put('/settings/founder/update/{id}', [FounderController::class, 'update'])->name('admin.founder.update');
+        
+
         //Office Hours 
         Route::get('/settings/office/hours/index', [SettingsController::class, 'indexOfficeHours'])->name('admin.officeHours.index');
         Route::post('/settings/store/office-hours', [SettingsController::class, 'storeOfficeHours'])->name('admin.office-hours.store');
@@ -129,7 +149,7 @@ Route::prefix('admin')->group(function () {
          
         //Service
         Route::get('service/index', [ServiceController::class, 'index'])->name('admin.service.index');
-        Route::get('service/create', [ServiceController::class, 'create'])->name('admin.service.create');
+        Route::get('service/create', [ServiceController::class, 'create'])->name('admin.service.create'); 
         Route::post('post/service', [ServiceController::class, 'store'])->name('admin.service.store');
         Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('admin.service.edit');
         Route::put('service/{id}', [ServiceController::class, 'update'])->name('admin.service.update');

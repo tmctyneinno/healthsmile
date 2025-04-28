@@ -11,7 +11,7 @@
                     @if(isset($visionMission))
                         @method('PUT')
                     @endif  
-                    <div class="row">
+                    <div class="row"> 
                          
                         
                         

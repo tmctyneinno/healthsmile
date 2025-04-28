@@ -13,20 +13,22 @@
             alt="Logo" width="80"  class="d-inline-block align-text-top"
             src="{{ asset('assets/images/logo.png')}}"/>
           </h2>
-          <p>
-            We are a dental health wellness organisation promoting preventive dental health care. 
-            A lot of dental health problems ...
+          <p class="text-left">
+            {{ Str::limit(strip_tags($aboutUs->content), 150) }}
+
             <a style="color: #007bff" href="{{ route('home.about') }}" >Click About </a>
           </p>
            
         </div>
         <ul class="ftco-footer-social list-unstyled float-md-left float-lft ">
           <li class="ftco-animate">
-            <a href="https://www.linkedin.com/company/healthy-smiling-ireland" target="_blank"><span class="icon-linkedin"></span></a>
+            {{-- https://www.linkedin.com/company/healthy-smiling-ireland --}}
+            <a href="{{ $sociallink->linkedin}}" target="_blank"><span class="icon-linkedin"></span></a>
          </li>
           {{-- <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li> --}}
           <li class="ftco-animate">
-            <a href="https://www.instagram.com/healthsmilingireland" target="_blank"><span class="icon-instagram"></span></a>
+            {{-- https://www.instagram.com/healthsmilingireland --}}
+            <a href="{{$sociallink->instagram }}" target="_blank"><span class="icon-instagram"></span></a>
          </li>
         </ul>
       </div>
@@ -70,7 +72,13 @@
               <ul>
                 {{-- <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li> --}}
                 {{-- <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li> --}}
-                <li><a href="#"><span class="icon icon-envelope"></span><span class="text"> info@healthysmilingireland.ie</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">{{ $contactUs->first_email }} 
+                 
+                  @if( $contactUs->second_email == null)
+                  , {{$contactUs->second_email}}
+                  @endif
+                </span></a></li>
+              
               </ul>
             </div>
         </div>

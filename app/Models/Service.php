@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Service extends Model
 {
@@ -14,7 +15,7 @@ class Service extends Model
         'content', 
         'image',
     ];
-
+ 
     protected static function boot()
     {
         parent::boot();

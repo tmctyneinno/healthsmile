@@ -39,6 +39,18 @@
                     <span class="nav-text">Transaction</span>
                 </a>
             </li>
+            <li>
+                <a class="has-arrow ai-icon" href="{{ route('admin.gallery.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-layer-1"></i>
+                    <span class="nav-text">Gallery</span>
+                </a>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="{{ route('admin.contact.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-layer-1"></i>
+                    <span class="nav-text">Contact</span>
+                </a>
+            </li>
            
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-settings"></i>
@@ -48,14 +60,14 @@
                     
                     <li>
                         <a  href="{{route('admin.about-us')}}" aria-expanded="false">About us</a>
-                    </li>
+                    </li> 
                    
-                    <li>
+                    {{-- <li>
                         <a  href="{{route('admin.testimonials.index')}}" aria-expanded="false">Testimonials</a>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <a  href="{{route('admin.faq.index')}}" aria-expanded="false">FAQs</a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a  href="{{route('admin.menu.index')}}" aria-expanded="false"> Manage Menu</a>
                     </li>

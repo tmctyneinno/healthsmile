@@ -25,14 +25,14 @@ class SettingsController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'first_title' => 'required|string',
-                'first_content' => 'required|string',
-                'second_title' => 'required|string',
-                'second_content' => 'required|string',
-                'third_title' => 'required|string',
-                'third_content' => 'required|string',
-                'four_title' => 'required|string',
-                'four_content' => 'required|string',
+                'first_title' => 'nullable|string',
+                'first_content' => 'nullable|string',
+                'second_title' => 'nullable|string',
+                'second_content' => 'nullable|string',
+                'third_title' => 'nullable|string',
+                'third_content' => 'nullable|string',
+                'four_title' => 'nullable|string',
+                'four_content' => 'nullable|string',
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:5048',
             ]);
 
@@ -68,14 +68,14 @@ class SettingsController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'first_title' => 'required|string',
-                'first_content' => 'required|string',
-                'second_title' => 'required|string',
-                'second_content' => 'required|string',
-                'third_title' => 'required|string',
-                'third_content' => 'required|string',
-                'four_title' => 'required|string',
-                'four_content' => 'required|string',
+               'first_title' => 'nullable|string',
+                'first_content' => 'nullable|string',
+                'second_title' => 'nullable|string',
+                'second_content' => 'nullable|string',
+                'third_title' => 'nullable|string',
+                'third_content' => 'nullable|string',
+                'four_title' => 'nullable|string',
+                'four_content' => 'nullable|string',
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:5048',
             ]);
     

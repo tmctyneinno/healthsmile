@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Posts;
+use App\Models\Blog;
 
 use Illuminate\Http\Request; 
 
@@ -32,14 +32,14 @@ class BlogController extends Controller
             $image->move(public_path('assets/images/blog/'), $imageName);
         }
         
-        Posts::create(array_merge($validated, ['image' => 'assets/images/blog/'.$imageName]));
-    
+        Blog::create(array_merge($validated, ['image' => 'assets/images/blog/'.$imageName]));
+     
         return redirect()->route('admin.blog.create')->with('success', 'Blog created successfully.');
     }
 
     public function edit($id)
     {
-        $post = Posts::findOrFail(decrypt($id));
+        $post = Blog::findOrFail(decrypt($id));
         return view('admin.blog.edit', compact('post'));
     } 
 
@@ -52,7 +52,7 @@ class BlogController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:32768', 
         ]);
     
-        $blog = Posts::findOrFail($id);   
+        $blog = Blog::findOrFail($id);   
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->extension();
@@ -72,20 +72,20 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
-        $blog= Posts::findOrFail(decrypt($id));
+        $blog= Blog::findOrFail(decrypt($id));
         $blog->delete();
         return redirect()->route('admin.blog.index')->with('success', 'Blog deleted successfully.');
     }
 
     public function show($slug)
     {
-        $blogItem = Posts::where('slug', $slug)->first();
+        $blogItem = Blog::where('slug', $slug)->first();
 
         if (!$blogItem) {
             return view('home.errors.404'); 
         }
 
-        $relatedBlog = Posts::where('id', '!=', $blogItem->id)
+        $relatedBlog = Blog::where('id', '!=', $blogItem->id)
                                      ->inRandomOrder()
                                      ->take(6) 
                                      ->get();
@@ -94,13 +94,13 @@ class BlogController extends Controller
     }
 
     public function details($slug){
-        $postItem = Posts::where('slug', $slug)->first();
+        $postItem = Blog::where('slug', $slug)->first();
     
         if (!$postItem) {
             return view('home.errors.404'); 
         }
 
-        $relatedPost = Posts::where('slug', '!=', $slug)
+        $relatedPost = Blog::where('slug', '!=', $slug)
                                 ->latest()
                                 ->get();
     

@@ -9,7 +9,7 @@
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
-                @endif
+                @endif 
                 @if(session('error'))
                     <div id="success-danger" class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('error') }}
@@ -43,11 +43,11 @@
                     <div class="row">
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Facebook Link</label>
-                            <input type="text" class="form-control" placeholder="Face Link" name="facebook" value=" {{ isset($sociallink) ? $sociallink->facebook : '' }}" required>
+                            <input type="text" class="form-control" placeholder="Face Link" name="facebook" value=" {{ isset($sociallink) ? $sociallink->facebook : '' }}" >
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Twitter Link</label>
-                            <input type="text" class="form-control" placeholder="Twitter Link" name="twitter" value=" {{ isset($sociallink) ? $sociallink->twitter : '' }}" required>
+                            <input type="text" class="form-control" placeholder="Twitter Link" name="twitter" value=" {{ isset($sociallink) ? $sociallink->twitter : '' }}" >
                         </div>
 
                         <div class="mb-3 col-md-10">
@@ -56,7 +56,7 @@
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Instagram Link </label>
-                            <input type="text" class="form-control" placeholder="Title" name="instagram" value=" {{ isset($sociallink) ? $sociallink->instagram : '' }}" >
+                            <input type="text" class="form-control" placeholder="Title" name="instagram" value=" {{ isset($sociallink) ? $sociallink->instagram : '' }}" required>
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label"> Linkedin Link </label>

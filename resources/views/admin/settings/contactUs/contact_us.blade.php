@@ -14,15 +14,15 @@
                     <div class="row">
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Company name </label>
-                            <input autocomplete="off" type="text" class="form-control" placeholder="Company name" name="company_name" value=" {{ isset($contactUs) ? $contactUs->company_name : '' }}" required>
+                            <input autocomplete="off" type="text" class="form-control" placeholder="Company name" name="company_name" value=" {{ isset($contactUs) ? $contactUs->company_name : '' }}" >
                        </div>
                        <div class="mb-3 col-md-10">
                             <label class="form-label">Website link </label>
-                            <input autocomplete="off" type="text" class="form-control" placeholder="Website link " name="website_link" value=" {{ isset($contactUs) ? $contactUs->website_link : '' }}" required>
+                            <input autocomplete="off" type="text" class="form-control" placeholder="Website link " name="website_link" value=" {{ isset($contactUs) ? $contactUs->website_link : '' }}" >
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label">First Phone number</label>
-                            <input autocomplete="off" type="phone" class="form-control" placeholder="First Phone number" name="first_phone" value=" {{ isset($contactUs) ? $contactUs->first_phone : '' }}" required>
+                            <input autocomplete="off" type="phone" class="form-control" placeholder="First Phone number" name="first_phone" value=" {{ isset($contactUs) ? $contactUs->first_phone : '' }}" >
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Second Phone number</label>
@@ -31,7 +31,7 @@
 
                         <div class="mb-3 col-md-10">
                             <label class="form-label">First Email </label>
-                            <input autocomplete="off" type="email" class="form-control" placeholder="First Email" name="first_email" value=" {{ isset($contactUs) ? $contactUs->first_email : '' }}" required>
+                            <input autocomplete="off" type="email" class="form-control" placeholder="First Email" name="first_email" value=" {{ isset($contactUs) ? $contactUs->first_email : '' }}" >
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Second Email </label>

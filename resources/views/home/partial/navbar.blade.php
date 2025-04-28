@@ -6,7 +6,7 @@
               style="background-color: #fff; padding: 8px"
               alt="Logo" width="80"  class="d-inline-block align-text-top"
               src="{{ asset('assets/images/logo.png')}}"
-          />
+          /> 
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu

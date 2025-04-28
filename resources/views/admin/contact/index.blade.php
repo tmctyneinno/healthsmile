@@ -6,7 +6,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Contact Form</a></li>
+                <li class=" active"><a href="javascript:void(0)"> / Contact Form</a></li>
                 
             </ol>
         </div>

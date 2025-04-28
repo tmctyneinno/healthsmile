@@ -5,8 +5,8 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Projects status</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard </a></li>
+                <li class=" active"><a href="javascript:void(0)"> / Gallery </a></li>
                 
             </ol>
         </div>
@@ -35,10 +35,10 @@
 
                     <div class="card-header border-0 pb-0">
                         <div class="clearfix">
-                            <h3 class="card-title">Projects Status List</h3>
+                            <h3 class="card-title">Gallery List</h3>
                         </div>
                         <div class="clearfix text-center">
-                            <a href="{{route('admin.projects.status.create')}}" class="btn btn-primary">Add Projects Status</a>
+                            <a href="{{route('admin.gallery.create')}}" class="btn btn-primary">Add Gallery </a>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
                                 <thead>
                                     <tr>
                                         <th class="width80">#</th>
-                                        <th>Title</th>
+                                        {{-- <th>Title</th> --}}
                                         <th>Image</th>
                                         <th>DATE   </th>
                                         <th>ACTION</th>
@@ -57,26 +57,20 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($galleries as $index => $gallery)
-                                        <tr>
+                                        <tr> 
                                             <td><strong>{{ $galleries->firstItem() + $index }}</strong></td>
-                                            <td>{{ $gallery->title }}</td>
-                                            <td>{{ $gallery->video_link }}</td>
+                                            {{-- <td>{{ $gallery->title }}</td> --}}
                                             <td>
-                                                @if ($gallery->images)
-                                                    @foreach (json_decode($gallery->images, true) as $image)
-                                                        <img style="width: 100px; height: 100px; object-fit: cover;" src="{{ asset($image) }}" class="img-thumbnail" alt="{{ $gallery->title }}">
-                                                    @endforeach
-                                                @else
-                                                    <p>No images found</p>
-                                                @endif
+                                                <img style="width: 100px; height: 100px; object-fit: cover;" src="{{ asset($gallery->image) }}" class="img-thumbnail" alt="{{ $gallery->title }}">
+
                                             </td>
                                              
                                             
                                             <td>{{ $gallery->created_at->format('d F Y') }}</td>
                                             <td>
                                                 <div class="d-flex">
-                                                    <a class="btn btn-primary " style="margin-right: 5px;" href="{{ route('admin.projects.status.edit', encrypt($gallery->id)) }}">Edit</a>
-                                                    <a class="btn btn-danger" href="{{ route('admin.projects.status.destroy', encrypt($gallery->id)) }}" onclick="return confirm('Are you sure you want to delete this project status?');">Delete</a>
+                                                    <a class="btn btn-primary " style="margin-right: 5px;" href="{{ route('admin.gallery.edit', encrypt($gallery->id)) }}">Edit</a>
+                                                    <a class="btn btn-danger" href="{{ route('admin.gallery.destroy', encrypt($gallery->id)) }}" onclick="return confirm('Are you sure you want to delete this Gallery?');">Delete</a>
                                                 </div>
                                                
                                             </td>

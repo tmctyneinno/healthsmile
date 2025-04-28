@@ -5,7 +5,7 @@ use Http;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Models\ContactForm;
+use App\Models\Contact;
 
 class ContactFormController extends Controller
 { 
@@ -45,19 +45,19 @@ class ContactFormController extends Controller
         if (!$recaptcha_success) {
             return redirect()->back()->withInput()->withErrors(['recaptcha' => 'Please verify that you are not a robot.']);
         }
-        ContactForm::create($request->all());
+        Contact::create($request->all());
     
         return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
 
     public function show($id){
-        $contact = ContactForm::findOrFail(decrypt($id));
+        $contact = Contact::findOrFail(decrypt($id));
         return view('admin.contact.show', compact('contact'));
     }
 
     public function destroy($id)
     {
-        $contact = ContactForm::find(decrypt($id));
+        $contact = Contact::find(decrypt($id));
 
         if (!$contact) {
             return redirect()->back()->with('error', 'Contact us Form data not found.');

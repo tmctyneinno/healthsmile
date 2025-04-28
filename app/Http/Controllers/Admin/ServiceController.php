@@ -10,7 +10,7 @@ class ServiceController extends Controller
     public function index(){
        
         return view('admin.service.index');
-    }
+    } 
 
     public function create(){
         return view('admin.service.create');
@@ -81,7 +81,7 @@ class ServiceController extends Controller
 
         if (!$serviceItem) {
             return view('home.errors.404'); 
-        }
+        } 
 
         $relatedservice = service::where('id', '!=', $serviceItem->id)
                                      ->inRandomOrder()

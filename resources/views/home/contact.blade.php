@@ -29,10 +29,10 @@
 
         </div>
         <div class="col-md-4">
-          <p><span>Email:</span> <a href="mailto:info@healthysmilingireland.ie">: info@healthysmilingireland.ie</a></p>
+          <p><span>Email:</span> <a href="mailto:info@healthysmilingireland.ie">: {{ $contactUs->first_email}} </a></p>
         </div>
         <div class="col-md-4">
-          <p><span>Website</span> <a href="www.healthysmilingireland.ie">www.healthysmilingireland.ie</a></p>
+          <p><span>Website</span> <a href="www.healthysmilingireland.ie"> {{ $contactUs->website_link}}</a></p>
         </div>
       </div>
       <div class="row block-9">

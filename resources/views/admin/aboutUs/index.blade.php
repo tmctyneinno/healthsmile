@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div id="main-wrapper">
+
     <!--**********************************
         Content body start
     ***********************************-->
@@ -37,7 +37,7 @@
                             <div class="col-sm-2"> 
                                 <div class="nav flex-column nav-pills mb-3" role="tablist">
                                     <a href="{{ route('admin.visionMission.index') }}" class="nav-link active">Vision/Mission</a>
-                                    <a href="{{ route('admin.governanceBoard') }}" class="nav-link ">Governance Board</a>
+                                    <a href="{{ route('admin.governanceBoard.index') }}" class="nav-link ">Governance Board</a>
                                 </div> 
                             </div>
                             <div class="col-sm-10">
@@ -56,5 +56,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

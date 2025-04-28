@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                
+                 
                 <form method="POST" action="{{ isset($aboutUs) ? route('admin.settings.updateAboutus', $aboutUs->id) : route('admin.settings.storeAboutus') }}" enctype="multipart/form-data">
                     @csrf
                     @if(isset($aboutUs))
@@ -35,7 +35,7 @@
                             <img id="image-preview" src="" alt="Image Preview" class="img-thumbnail mt-2" style="display:none; max-width: 200px;">
                         </div>
                         <small class="text-danger">Maximum file size: 2MB. Allowed file types: JPEG, PNG, JPG, GIF.</small>
-                           
+{{--                            
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Header Image </label>
                             <input id="header_image" type="file" class="form-control @error('image') is-invalid @enderror" name="header_image"  onchange="previewImagebg(event)">
@@ -49,7 +49,7 @@
                             @endif
                             <img id="image-previewbg" src="" alt="Image Previewbg" class="img-thumbnail mt-2" style="display:none; max-width: 200px;">
                         </div>
-                        <small class="text-danger">Maximum file size: 2MB. Allowed file types: JPEG, PNG, JPG, GIF.</small>
+                        <small class="text-danger">Maximum file size: 2MB. Allowed file types: JPEG, PNG, JPG, GIF.</small> --}}
 
                     </div>
                     <button type="submit" class="btn btn-primary">{{ isset($aboutUs) ? 'Update' : 'Add' }}</button>
@@ -91,6 +91,25 @@
     </div>
 </div>
 
+{{-- CKEditor CDN --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+
+
 <script>
-    CKEDITOR.replace('ckeditor');
-</script>
+     CKEDITOR.replace('ckeditor');
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('image-preview');
+        
+        if (input.files && input.files[0]) { 
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script> 

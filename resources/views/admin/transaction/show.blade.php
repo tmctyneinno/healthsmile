@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<div id="main-wrapper">
+
      <!--**********************************
         Content body start
     ***********************************-->
@@ -60,7 +60,7 @@
                                         <div class="col-sm-9">
                                             <p>{{ \Carbon\Carbon::parse($transaction->booking->appointment_date ?? $bookng->appointment_date)->format('l, d F Y') }}</p>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="mb-3 row align-items-center">
                                         <label class="col-sm-3 col-form-label form-label">Appointment time</label>
                                         <div class="col-sm-9">
@@ -113,5 +113,5 @@
 
         </div>
     </div>
-</div>
+
 @endsection

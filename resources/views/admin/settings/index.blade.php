@@ -37,7 +37,7 @@
                             <div class="col-sm-2">
                                 <div class="nav flex-column nav-pills mb-3" role="tablist">
                                     <a href="{{ route('admin.visionMission.index') }}" class="nav-link active">Vision/Mission</a>
-                                    <a href="{{ route('admin.coreValue.index') }}" class="nav-link ">Core Value</a>
+                                    {{-- <a href="{{ route('admin.coreValue.index') }}" class="nav-link ">Core Value</a> --}}
                                     <a href="{{ route('admin.settings.aboutUs') }}"  class="nav-link " >About us</a>
                                     <a href="{{ route('admin.settings.contactUs') }}"  class="nav-link" >Contact us</a>
                                     {{-- <a href="{{ route('admin.termsCondition.index') }}"  class="nav-link" >Terms Condition</a> --}}

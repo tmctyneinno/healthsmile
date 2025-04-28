@@ -1,16 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 
-<div id="main-wrapper">
-     <!--**********************************
-        Content body start
-    ***********************************-->
+
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
             <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
                 <div class="me-auto d-lg-block d-block">
-                    <h2 class="text-black font-w600">Service</h2>
+                    <h2 class="text-black font-w600">Service</h2> 
                     <p class="mb-0">Welcome to {{ ($contactUs->company_name ??"") }} backend</p>
                 </div>
                 <a href="{{route('admin.service.index')}}" class="btn btn-primary rounded light">View service</a>
@@ -111,5 +108,5 @@
 
         </div>
     </div>
-</div>
+
 @endsection

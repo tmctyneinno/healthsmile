@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Title -->
     <title>{{ $contactUs->company_name ?? config('app.name', 'Admin Panel') }}</title> {{-- Added fallback --}}
-
+ 
     <!-- Meta -->
     <meta name="author" content="The Morgans"> {{-- Updated author --}}
     <meta name="robots" content="noindex, nofollow"> {{-- Prevent search engine indexing --}}
@@ -45,38 +45,17 @@
 </head>
 
 <body>
-
-    <!--*******************
-        Preloader start
-    ********************-->
-    {{-- <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div> --}}
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
-    <div id="main-wrapper"> {{-- Common wrapper div in many templates --}}
-
+    <div id="main-wrapper"> 
         @include('admin.partials.navbar') {{-- Corrected include syntax --}}
         @include('admin.partials.sidebar') {{-- Corrected include syntax --}}
 
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
-            <div class="container-fluid">
-                {{-- You might want a row/col structure here depending on your content --}}
-                @yield('content')
-            </div>
-        </div>
+        <main>
+            {{-- You might want a row/col structure here depending on your content --}}
+            @yield('content')
+        </main>
         <!--**********************************
             Content body end
         ***********************************-->

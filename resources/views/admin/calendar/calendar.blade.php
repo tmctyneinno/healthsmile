@@ -15,7 +15,7 @@
  
 @section('content')
 
-<div id="main-wrapper">
+
      <!--**********************************
         Content body start
     ***********************************-->
@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>

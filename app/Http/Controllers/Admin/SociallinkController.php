@@ -11,15 +11,15 @@ class SociallinkController extends Controller
     public function index(Request $request){
         return view('admin.settings.socialLink.index');
     }
-
+ 
     public function storeSocialLinks(Request $request){ 
         $data = $request->validate([
-            'facebook' => 'required|string|max:50',
-            'twitter' => 'string|max:50',
-            'whatsapp' => 'max:50',
-            'instagram' => 'max:50',
-            'linkedin' => 'max:50',
-            'youtube' => 'max:50',
+            'facebook' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'whatsapp' => 'nullable',
+            'instagram' => 'required',
+            'linkedin' => 'required',
+            'youtube' => 'nullable',
         ]);
 
         Sociallink::create($data);
@@ -29,12 +29,12 @@ class SociallinkController extends Controller
     public function updateSocialLinks(Request $request, $id)
     {
         $data = $request->validate([
-            'facebook' => 'required|string|max:50',
-            'twitter' => 'string|max:50',
-            'whatsapp' => 'max:50',
-            'instagram' => 'max:50',
-            'linkedin' => 'max:50',
-            'youtube' => 'max:50',
+            'facebook' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'whatsapp' => 'nullable',
+            'instagram' => 'required',
+            'linkedin' => 'required',
+            'youtube' => 'nullable',
         ]);
         $socialLink = Sociallink::findOrFail($id);
         $socialLink->update($data);

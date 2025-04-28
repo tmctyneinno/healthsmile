@@ -76,17 +76,7 @@
 {{-- CKEditor CDN --}}
 <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 
-<script>
-    // Initialize CKEditor
-    ClassicEditor.create( document.querySelector( '#content' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-    ClassicEditor.create( document.querySelector( '#mission' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+
 <script>
      CKEDITOR.replace('ckeditor');
     function previewImage(event) {

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<div id="main-wrapper">
+
      <!--**********************************
         Content body start
     ***********************************-->
@@ -11,7 +11,7 @@
             <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
                 <div class="me-auto d-lg-block d-block">
                     <h2 class="text-black font-w600">Gallery</h2>
-                    <p class="mb-0">Welcome to Archway Home backend</p>
+                    <p class="mb-0">Welcome to Healthy Smiling backend</p>
                 </div>
                 <a href="{{route('admin.gallery.index')}}" class="btn btn-primary rounded light">View gallery</a>
             </div>
@@ -42,31 +42,29 @@
                                 <form method="POST"  action="{{ route('admin.gallery.update', $gallery->id) }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="mb-3 row align-items-center">
+                                    {{-- <div class="mb-3 row align-items-center">
                                         <label class="col-sm-3 col-form-label form-label">Title</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" placeholder="Title" name="title" id="title" required value="{{ $gallery->title }}">
                                             <small class="text-info">Get the Embed Code not the youTube link</small>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     
-                                    <div class="mb-3 row align-items-center">
-                                        <label class="col-sm-3 col-form-label form-label">Video Embed Code link</label>
+                                    <div class="mb-3 row ">
+                                        <label class="col-sm-3 col-form-label form-label">Image</label>
                                         <div class="col-sm-9">
-                                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" onchange="previewImage(event)">
+                                            <input id="image" type="file"  class="form-control @error('image') is-invalid @enderror" name="image"  onchange="previewImage(event)" >
                                             @error('image')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                            <img src="{{ asset($gallery->images) }}" alt="{{ $gallery->title }}" class="img-thumbnail mt-2" width="200">
+                                            <img src="{{ asset($gallery->image) }}" alt="{{ $gallery->title }}" class="img-thumbnail mt-2" width="200">
                                            
                                             <img id="image-preview" src="" alt="Image Preview" class="img-thumbnail mt-2" style="display:none; max-width: 200px;">
-                                           <br>
-                                            <small class="text-danger">Maximum file size: 2MB. Allowed file types: JPEG, PNG, JPG, GIF.</small>
-                                    
-                                         </div>
-                                         
+                                        </div>
+                                        <small class="text-danger">Maximum file size: 2MB. Allowed file types: JPEG, PNG, JPG, GIF.</small>
+                                          
                                     </div>
                                       
                                     
@@ -112,5 +110,5 @@
 
         </div>
     </div>
-</div>
+
 @endsection

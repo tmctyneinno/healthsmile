@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<div id="main-wrapper">
+
 
   
     <!--**********************************
@@ -39,16 +39,15 @@
                                             </svg>
                                         </span>
                                         <div class="media-body mb-sm-0 mb-3 me-5">
-                                            <h4 class="fs-22 text-white">Total Projects</h4>
+                                            <h4 class="fs-22 text-white">Total Booking</h4>
                                             <div class="progress mt-3 mb-2" style="height:8px;">
-                                                
                                             </div>
                                             <span class="fs-13">
-                                                <a href="" class="text-white">Click here</a>
+                                                <a href="{{ route('admin.booking.index')}}" class="text-white">Click here</a>
                                             </span>
 
                                         </div>
-                                        <span class="fs-35 font-w500">{{ $totalProjects ?? ''}}</span>
+                                        <span class="fs-35 font-w500">{{ $totalBookings ?? ''}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -58,9 +57,9 @@
                                 <div class="card-body">
                                     <div class="media align-items-center">
                                         <div class="media-body me-3">
-                                            <h2 class="fs-28 text-black font-w600">{{ $totalConsultant ?? ''}}</h2>
-                                            <p class="property-p mb-0 text-black font-w500">Total Consultant </p>
-                                            <span class="fs-13"><a href="" class="text-muted">Click here</a></span>
+                                            <h2 class="fs-28 text-black font-w600">{{ $totalTransactions ?? ''}}</h2>
+                                            <p class="property-p mb-0 text-black font-w500">Total Transaction </p>
+                                            <span class="fs-13"><a href="{{ route('admin.transaction.index') }}" class="text-muted">Click here</a></span>
                                         </div>
                                         
                                     </div>
@@ -72,9 +71,9 @@
                                 <div class="card-body">
                                     <div class="media align-items-center">
                                         <div class="media-body me-3">
-                                            <h2 class="fs-28 text-black font-w600"> {{ $totalInspection ?? ''}} </h2>
-                                            <p class="property-p mb-0 text-black font-w500">Total Booking Inspection</p>
-                                            <span class="fs-13"><a href="" class="text-muted">Click here</a></span>
+                                            <h2 class="fs-28 text-black font-w600"> {{ $totalServices ?? ''}} </h2>
+                                            <p class="property-p mb-0 text-black font-w500">Total Services</p>
+                                            <span class="fs-13"><a href="{{ route('admin.service.index')}}" class="text-muted">Click here</a></span>
                                         </div>
                                        
                                     </div>
@@ -88,7 +87,7 @@
                                         <div class="media-body me-3">
                                             <h2 class="fs-28 text-black font-w600">{{ $totalGallery  ?? ''}}</h2>
                                             <p class="property-p mb-0 text-black font-w500">Total Gallery</p>
-                                            <span class="fs-13"><a href="" class="text-muted">Click here</a></span>
+                                            <span class="fs-13"><a href="{{ route('admin.gallery.index') }}" class="text-muted">Click here</a></span>
                                       
                                         </div>
                                         
@@ -101,9 +100,9 @@
                                 <div class="card-body">
                                     <div class="media align-items-center">
                                         <div class="media-body me-3">
-                                            <h2 class="fs-28 text-black font-w600">{{ $totalPost ??''}}</h2>
+                                            <h2 class="fs-28 text-black font-w600">{{ $totalBlogs ??''}}</h2>
                                             <p class="property-p mb-0 text-black font-w500">Total  Posts</p>
-                                            <span class="fs-13"><a href="" class="text-muted">Click here</a></span>
+                                            <span class="fs-13"><a href="{{ route('admin.blog.index') }}" class="text-muted">Click here</a></span>
                                         </div>
                                         
                                     </div>
@@ -124,7 +123,7 @@
                                         <div class="media-body me-3">
                                             <h2 class="fs-28 text-black font-w600">{{ $totalContacts ?? ''}}</h2>
                                             <p class="property-p mb-0 text-black font-w500">Total Contact </p>
-                                            <span class="fs-13"><a href="" class="text-muted">Click here</a></span>
+                                            <span class="fs-13"><a href="{{ route('admin.contact.index')}}" class="text-muted">Click here</a></span>
                                         </div>
                                         
                                     </div>
@@ -132,20 +131,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-sm-12 col-md-3">
-                            <div class="card property-card">
-                                <div class="card-body">
-                                    <div class="media align-items-center">
-                                        <div class="media-body me-3">
-                                            <h2 class="fs-28 text-black font-w600">{{ $totalFaqSubmitForm ?? '' }}</h2>
-                                            <p class="property-p mb-0 text-black font-w500"> Total FAQs Submit Form</p>
-                                            <span class="fs-13"><a href="" class="text-muted">Click here</a></span>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         
                     </div>
                 </div>
@@ -157,6 +143,6 @@
         Content body end
     ***********************************-->
 
-</div>
+
 
 @endsection

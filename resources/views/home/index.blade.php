@@ -12,90 +12,45 @@
 
    
     <section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url('{{ asset('assets/images/bg_1.png') }}');">
+		@forelse ($sliders as $slider)
+		<div class="slider-item" style="background-image: url('{{ asset($slider->image) }}');">
 			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text align-items-center" data-scrollax-parent="true">
-					<div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-						<div class="text-overlay">
-							<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Dentistry in a Calm and Relaxed Environment</h1>
-							<p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-		<div class="slider-item" style="background-image: url('{{ asset('assets/images/bg_2.png')}}');">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text align-items-center" data-scrollax-parent="true">
-					<div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-						<div class="text-overlay">
-							<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Achieve Your Desired Perfect Smile</h1>
-							<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							<p><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-5">
-				<div class="col-md-7 text-center heading-section ftco-animate">
-					<h2 class="mb-2">Our Service Keeps you Smile</h2>
-					<p>Everybody’s got teeth! Everybody needs teeth! Plus, prevention is better than cure.</p>
-				</div>
-			</div>
-			<div class="row">
-				@forelse ($services as $item)
-				<div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate fadeInUp ftco-animated">
-					<div class="staff">
-						<div class="img mb-4" style="background-image: url('{{ asset($item->image) }}');"></div>
-						<div class="info text-center">
-							<h3><a href="">{{$item->title}}</a></h3>
-							<div class="text">
-								<p>
-									{!! Str::limit($item->content, 50) !!}
+				<div class="container">
+					<div class="row slider-text align-items-center" data-scrollax-parent="true">
+						<div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+							<div class="text-overlay">
+								<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$slider->title}}</h1>
+								<p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+									{{$slider->caption}}
 								</p>
-								
+								<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p>
 							</div>
 						</div>
 					</div>
 				</div>
-				@empty
-					<p>No service found</p>
-				@endforelse
-				
-
-
-				
-				
-				
 			</div>
-		</div>
+		@empty
+			<p>No data found</p>
+		@endforelse
+		
+	
 	</section>
+
+	
 
   
     <section class="ftco-section ftco-services">
      
       <div class="container-wrap mt-5">
       	<div class="row d-flex no-gutters">
-      		<div class="col-md-6 img" style="background-image: url({{ asset('assets/images/gallery/img_5.png')}});">
+      		<div class="col-md-6 img" style="background-image: url({{ asset($aboutUs->image) }});">
       		</div>
       		<div class="col-md-6 d-flex">
 				<div class="about-wrap">
 					<div class="heading-section heading-section-white mb-5 ftco-animate">
-				  <h2 class="mb-2">We Offer High Quality Services</h2>
-				  <p>
-					We are a dental health wellness organisation promoting preventive dental health care. A lot of dental health problems can be avoided if only education and very early intervention is available to everyone. These dental health problems has led to lots of challenges such as pain, loss of teeth, mental health challenges, compromised quality of life, social exclusion and even malnutrition to name a few.
-				  </p>
-				  <p>
-					Healthy Smiling Ireland promotes dental health wellbeing through it’s interactive, fun and informative oral health prevention education and activities providing support to the populace online and onsite.
+				  <h2 class="mb-2">{{$aboutUs->title }}</h2> 
+				  <p class="text-justify"> 
+					{{ Str::limit(strip_tags($aboutUs->content), 900) }}
 				  </p>
 				  <a style="color: #fff" href="{{ route('home.about') }}" >View More </a>
 				  
