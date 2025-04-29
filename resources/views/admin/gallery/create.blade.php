@@ -13,7 +13,7 @@
                     <h2 class="text-black font-w600">Gallery status</h2>
                     <p class="mb-0">Welcome to {{ $contactUs->company_name}} backend</p>
                 </div>
-                <a href="{{route('admin.gallery.index')}}" class="btn btn-primary rounded light">View Projects status</a>
+                <a href="{{route('admin.gallery.index')}}" class="btn btn-primary rounded light">View Gallery</a>
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-12 align-center">

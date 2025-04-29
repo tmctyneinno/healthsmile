@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<div id="main-wrapper">
+
      <!--**********************************
         Content body start
     ***********************************-->
@@ -11,7 +11,7 @@
             <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
                 <div class="me-auto d-lg-block d-block">
                     <h2 class="text-black font-w600">Menu</h2>
-                    <p class="mb-0">Welcome to  Archway Home backend</p>
+                    <p class="mb-0">Welcome to Heathy Smiling backend</p>
                 </div>
                 <a href="{{route('admin.menu.index')}}" class="btn btn-primary rounded light">View Menu</a>
             </div>
@@ -101,5 +101,5 @@
 
         </div>
     </div>
-</div>
+
 @endsection

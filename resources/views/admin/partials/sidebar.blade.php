@@ -68,9 +68,9 @@
                     {{-- <li>
                         <a  href="{{route('admin.faq.index')}}" aria-expanded="false">FAQs</a>
                     </li> --}}
-                    <li>
+                    {{-- <li>
                         <a  href="{{route('admin.menu.index')}}" aria-expanded="false"> Manage Menu</a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a  href="{{route('admin.slider.index')}}" aria-expanded="false"> slider</a>
                     </li>

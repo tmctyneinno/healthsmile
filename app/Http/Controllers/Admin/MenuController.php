@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\MenuItem;
 use Illuminate\Support\Str;
 use App\Http\Traits\AdminTrait;
-
+ 
 class MenuController extends Controller
 {
     use AdminTrait;

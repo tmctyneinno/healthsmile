@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Service;
-// use App\Models\About; // Incorrect model name
-use App\Models\AboutUs; // Correct model name
+// use App\Models\About; 
+use App\Models\AboutUs;
 use App\Models\Blog;
 use App\Models\Founder;
 use App\Models\Sociallink;
@@ -16,7 +16,7 @@ use App\Models\ContactUs;
 use App\Models\VisionMission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Schema; // <-- Import the Schema facade
+use Illuminate\Support\Facades\Schema; 
 
 class AppServiceProvider extends ServiceProvider
 {
