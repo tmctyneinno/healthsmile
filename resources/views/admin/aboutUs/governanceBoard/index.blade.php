@@ -11,7 +11,7 @@
             <div class="col-xl-12">
                 <div class="card"> 
                     <div class="card-header">
-                        <h4 class="card-title"> Governance Board</h4>
+                        <h4 class="card-title"> About us</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -37,14 +37,17 @@
                             <div class="col-sm-2"> 
                                 <div class="nav flex-column nav-pills mb-3" role="tablist">
                                     <a href="{{ route('admin.visionMission.index') }}" class="nav-link ">Vision/Mission</a>
-                                    <a href="{{ route('admin.governanceBoard') }}" class="nav-link active">Governance Board</a>
-                                </div> 
+                                    <a href="{{ route('admin.founder.index') }}" class="nav-link ">Founder</a>
+                                    <a href="{{ route('admin.settings.aboutUs') }}"  class="nav-link active" >About us</a>
+                                    <a href="{{ route('admin.settings.contactUs') }}"  class="nav-link " >Contact us</a>
+                                    <a href="{{ route('admin.socialLink.index') }}"  class="nav-link " >Social Link</a>
+                                </div>  
                             </div>
                             <div class="col-sm-10">
                                 <div class="tab-content">
                                     
                                     <div  class="tab-pane fade show active" role="tabpanel">
-                                        @include('admin.aboutUs.governanceBoard.add')
+                                        @include('admin.settings.aboutUs.about_us')
                                     </div>
                                    
                                   

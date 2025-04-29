@@ -108,7 +108,6 @@ class GalleryController extends Controller
             File::makeDirectory($imagePath, 0755, true);
         }
 
-        // Move the uploaded file to the public directory
         $image->move($imagePath, $imageName);
 
         if ($slider->image && File::exists(public_path($slider->image))) {
