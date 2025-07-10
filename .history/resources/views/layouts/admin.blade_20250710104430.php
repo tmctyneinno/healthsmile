@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset($contactUs->favicon ?? 'favicon.ico')  }}"> {{-- Added a fallback favicon --}}
 
     {{-- ****** Add/Update Open Graph Tags Here ****** --}}
-    <meta property="og:title" content="{{ $contactUs->company_name ?? config('app.name', 'Healthy Smiling') }}" />
+    <meta property="og:title" content="{{ $contactUs->company_name ?? config('app.name', 'Healthy Sm') }}" />
     <meta property="og:description" content=" We are a dental health wellness organisation promoting preventive dental health care. A lot of dental health problems can be avoided if only education and very early intervention is available to everyone. These dental health problems has led to lots of challenges such as pain, loss of teeth, mental health challenges, compromised quality of life, social exclusion and even malnutrition to name a few." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ url()->current() }}" /> 

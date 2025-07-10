@@ -4,20 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset($contactUs->favicon ?? 'favicon.ico')  }}"> {{-- Added a fallback favicon --}}
+    <!-- Title -->
+    <title>{{ $contactUs->company_name ?? config('app.name', 'Admin Panel') }}</title> {{-- Added fallback --}}
+ 
+    <!-- Meta -->
+    <meta name="author" content="The Morgans"> {{-- Updated author --}}
+    <meta name="robots" content="noindex, nofollow"> {{-- Prevent search engine indexing --}}
+    <meta name="description" content="Admin Dashboard for {{ $contactUs->company_name ?? config('app.name') }}"> {{-- Added basic description --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}"> {{-- Added CSRF token --}}
 
-    {{-- ****** Add/Update Open Graph Tags Here ****** --}}
-    <meta property="og:title" content="{{ $contactUs->company_name ?? config('app.name', 'Healthy Smiling') }}" />
-    <meta property="og:description" content=" We are a dental health wellness organisation promoting preventive dental health care. A lot of dental health problems can be avoided if only education and very early intervention is available to everyone. These dental health problems has led to lots of challenges such as pain, loss of teeth, mental health challenges, compromised quality of life, social exclusion and even malnutrition to name a few." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ url()->current() }}" /> 
-    <meta property="og:image" content="{{ asset($contactUs->favicon ?? '') }}" /> 
-    <meta property="og:image:width" content="1200" /> 
-    <meta property="og:image:height" content="630" /> 
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($contactUs->favicon ?? 'favicon.ico') }}"> {{-- Added fallback favicon --}}
+
     {{-- Open Graph tags (Optional for Admin, but good practice to have basic ones) --}}
     <meta property="og:title" content="{{ $contactUs->company_name ?? config('app.name', 'Admin Panel') }}">
-  
+    <meta property="og:description" content="Admin Dashboard">
     {{-- No need for og:image usually in admin --}}
 
     <!-- Vendor CSS -->
@@ -99,7 +103,7 @@
     <script src="{{ asset('backend/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/datatables/responsive/responsive.js') }}"></script>
     <script src="{{ asset('backend/vendor/js/plugins-init/datatables.init.js') }}"></script>
- 
+
     <!-- Dropzone -->
     <script src="{{ asset('backend/vendor/dropzone/dist/dropzone.js') }}"></script>
 
