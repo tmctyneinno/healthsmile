@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Service;
+
 
 class FrontendController extends Controller
 {
@@ -11,8 +13,15 @@ class FrontendController extends Controller
     }
 
     public function service(){
-        return view('home.service');
+        return view('home.service.index');
     }
+
+    public function serviceShow($slug){
+        $item = Service::where('slug', $slug)->firstOrFail();
+       
+        return view('home.service.serviceShow', ['item' => $item]);
+    }
+
 
     public function about(){
         return view('home.about.about');

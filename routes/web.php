@@ -27,6 +27,7 @@ require __DIR__.'/admin.php';
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/services', [FrontendController::class, 'service'])->name('home.services');
+Route::get('/services/{slug}', [FrontendController::class, 'serviceShow'])->name('home.services.show');
 Route::get('/about', [FrontendController::class, 'about'])->name('home.about');
 Route::get('/founder', [FrontendController::class, 'founder'])->name('home.founder');
 Route::get('/booking', [FrontendController::class, 'booking'])->name('home.booking');

@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        View::composer('home.partial.navbar', function ($view) {
+            $view->with('navServices', Service::latest()->take(5)->get());
+        });
         // First, check if the database connection is valid
         if ($this->databaseExists()) {
            
@@ -54,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
 
             if (Schema::hasTable('blogs')) {
                 View::share('posts', Blog::latest()->paginate(20));
-            }
+            } 
             if (Schema::hasTable('vision_missions')) {
                 View::share('visionMission', VisionMission::first()); 
             }

@@ -14,7 +14,7 @@
     <section class="home-slider owl-carousel">
 		@forelse ($sliders as $slider)
 		<div class="slider-item" style="background-image: url('{{ asset($slider->image) }}');">
-			<div class="overlay"></div>
+			<div class="overlay"></div> 
 				<div class="container">
 					<div class="row slider-text align-items-center" data-scrollax-parent="true">
 						<div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
@@ -23,7 +23,7 @@
 								<p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
 									{{$slider->caption}}
 								</p>
-								<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p>
+								{{-- <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="{{ route('home.booking') }}" class="btn btn-primary px-4 py-3">Online Booking</a></p> --}}
 							</div>
 						</div>
 					</div>
@@ -37,11 +37,50 @@
 	</section>
 
 	
+	<section class="ftco-section">
+      <div class="container"> 
+          <div class="row d-md-flex">
+              <div class="col-md-6 ftco-animate img about-image order-md-last" style="background-image: url({{ asset($visionMission->vision_img )}}); height:300px; ">
+              </div> 
+              <div class="col-md-6 ftco-animate pr-md-5 order-md-first">
+                  <div class="row">
+                <div class="col-md-12 nav-link-wrap mb-5">
+                  <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    {{-- <a class="nav-link active" id="v-pills-whatwedo-tab" data-toggle="pill" href="#v-pills-whatwedo" role="tab" aria-controls="v-pills-whatwedo" aria-selected="true">What we do</a> --}}
 
+                    <a class="nav-link active" id="v-pills-mission-tab" data-toggle="pill" href="#v-pills-mission" role="tab" aria-controls="v-pills-mission" aria-selected="false">Our mission</a>
+
+                    <a class="nav-link" id="v-pills-goal-tab" data-toggle="pill" href="#v-pills-goal" role="tab" aria-controls="v-pills-goal" aria-selected="false">Our vision</a>
+                  </div>
+                </div>
+                <div class="col-md-12 d-flex align-items-center">
+                  
+                  <div class="tab-content ftco-animate" id="v-pills-tabContent">
+
+
+                    <div class="tab-pane fade show active" id="v-pills-mission" role="tabpanel" aria-labelledby="v-pills-mission-tab">
+                      <div>
+                          <p>{!! $visionMission->vision !!}
+                         
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-goal" role="tabpanel" aria-labelledby="v-pills-goal-tab">
+                      <div>
+                         <p>{!! $visionMission->mission !!}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section>
   
     <section class="ftco-section ftco-services">
      
-      <div class="container-wrap mt-5">
+      <div class="container-wrap mt-0">
       	<div class="row d-flex no-gutters">
       		<div class="col-md-6 img" style="background-image: url({{ asset($aboutUs->image) }});">
       		</div>
@@ -50,10 +89,8 @@
 					<div class="heading-section heading-section-white mb-5 ftco-animate">
 				  <h2 class="mb-2">{{$aboutUs->title }}</h2> 
 				  <p class="text-justify"> 
-					{{ Str::limit(strip_tags($aboutUs->content), 900) }}
+					{{ strip_tags($aboutUs->content) }}
 				  </p>
-				  <a style="color: #fff" href="{{ route('home.about') }}" >View More </a>
-				  
 				</div>
       		</div>
       	</div>
@@ -222,7 +259,7 @@
       </div>
     </section>
 		
-	<section class="ftco-section-parallax mt-5 ">
+	{{-- <section class="ftco-section-parallax mt-5 ">
 		<div class="parallax-img d-flex align-items-center">
 		  <div class="container">
 			<div class="row d-flex justify-content-center">
@@ -243,7 +280,7 @@
 			</div>
 		  </div>
 		</div>
-	  </section>
+	  </section> --}}
 		
  
    

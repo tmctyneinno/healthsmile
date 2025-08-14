@@ -8,11 +8,12 @@
       <div class="col-md-3">
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">
-            <img 
+            <img  
             style="background-color: #fff; padding: 8px"
             alt="Logo" width="80"  class="d-inline-block align-text-top"
             src="{{ asset('assets/images/logo.png')}}"/>
           </h2>
+          <p><b>We are a dental health wellness organisation promoting preventive dental health care</b></p>
           <p class="text-left">
             {{ Str::limit(strip_tags($aboutUs->content), 150) }}
 
@@ -70,7 +71,11 @@
             <h2 class="ftco-heading-2">Office</h2>
             <div class="block-23 mb-3">
               <ul>
-                {{-- <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li> --}}
+                <li>
+                  <span class="icon icon-map-marker"></span><span class="text">
+                    {{ $contactUs->first_address }}
+                  </span>
+                </li>
                 {{-- <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li> --}}
                 <li><a href="#"><span class="icon icon-envelope"></span><span class="text">{{ $contactUs->first_email }} 
                  

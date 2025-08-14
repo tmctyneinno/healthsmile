@@ -43,7 +43,7 @@
       <div class="container"> 
           <div class="row d-md-flex">
               <div class="col-md-6 ftco-animate img about-image order-md-last" style="background-image: url({{ asset($visionMission->vision_img )}}); height:300px; ">
-              </div>
+              </div> 
               <div class="col-md-6 ftco-animate pr-md-5 order-md-first">
                   <div class="row">
                 <div class="col-md-12 nav-link-wrap mb-5">
